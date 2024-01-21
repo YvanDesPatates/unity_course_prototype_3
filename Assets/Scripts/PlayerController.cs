@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public float jumpForce;
     public float gravityModifier;
+    public ParticleSystem explosionParticle;
     
     private Rigidbody _playerRb;
     private bool _isOnGround = true;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Obstacle"))
         {
             _gameOver = true;
+            explosionParticle.Play();
             _playerAnim.SetBool("Death_b", true);
             _playerAnim.SetInteger("DeathType_int", 1);
         }
